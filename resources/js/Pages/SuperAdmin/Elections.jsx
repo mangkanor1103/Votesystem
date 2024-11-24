@@ -43,8 +43,6 @@ export default function Elections({ auth, elections }) {
                             className="block w-full p-3 border-green-300 focus:border-green-500 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded-md shadow-sm text-green-900 transition-all duration-300 ease-in-out transform hover:scale-105"
                             onChange={e => setData('election_name', e.target.value)}
                         />
-                        
-                        
                         <InputError message={errors.election_name} className="mt-2 text-red-500" />
     
                         <input
