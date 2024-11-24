@@ -44,6 +44,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/superadmin/elections/{id}', [ElectionController::class, 'show'])->name('superadmin.elections.show');
 });
 
+
+Route::get('/subadmin/electiondashboard', function () {
+    return Inertia::render('SubAdmin/ElectionDashboard');
+})->middleware(['auth', 'verified'])->name('subadmin.electiondashboard');
+
+
+
 // Profile routes for authenticated users
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
