@@ -27,9 +27,9 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/dashboard', function () {
-    return Inertia::render('SubDashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/subdashboard', function () {
+    return view('subadmin.subdashboard'); // Render a Blade view that will load your React app
+});
 
 // Define Share routes
 Route::resource('share', ShareController::class)
