@@ -22,6 +22,10 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/subadmin/electiondashboard', function () {
+    return Inertia::render('SubAdmin/ElectionDashboard');
+})->name('subadmin.electiondashboard');
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -43,12 +47,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Route to view the details of a specific election
     Route::get('/superadmin/elections/{id}', [ElectionController::class, 'show'])->name('superadmin.elections.show');
 });
-
-
-Route::get('/subadmin/electiondashboard', function () {
-    return Inertia::render('SubAdmin/ElectionDashboard');
-})->middleware(['auth', 'verified'])->name('subadmin.electiondashboard');
-
 
 
 // Profile routes for authenticated users
