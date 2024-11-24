@@ -27,6 +27,10 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/dashboard', function () {
+    return Inertia::render('SubDashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
 // Define Share routes
 Route::resource('share', ShareController::class)
     ->only(['index', 'store', 'update'])
