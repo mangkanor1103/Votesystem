@@ -22,10 +22,6 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/subadmin/electiondashboard', function () {
-    return Inertia::render('SubAdmin/ElectionDashboard');
-})->name('subadmin.electiondashboard');
-
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

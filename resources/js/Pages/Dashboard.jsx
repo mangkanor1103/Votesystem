@@ -1,9 +1,61 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head, Link } from '@inertiajs/react'; // Import Link for navigation
-import React, { useState, useEffect } from 'react';
+import { Head } from '@inertiajs/react';
+import React,{ useState, useEffect } from 'react';
 import { FaUserShield, FaUserPlus, FaChartPie, FaCog } from 'react-icons/fa';
 
 export default function SuperAdminDashboard() {
+
+
+
+
+    /*const [data, setdata] = useState([]);
+    const [loading, setLoading] = useState(true);
+    useEffect(() => {
+
+        setLoading(true);
+        axios.get('/data')
+
+        .then(response => {
+            setData(response.data);
+            setLoading(false);
+        })
+        .catch(error => {
+            console.error('Error fetching data: ', error);
+            setLoading(false);
+        })
+
+        }, [])
+
+
+
+
+
+        { loading
+         ?{
+
+            <p>Loading..</p>
+
+         }
+
+
+         :{
+
+                    <ul>
+        {data.map((item, index) => (
+            <li key={index}>
+                {item.id} = {item.name}
+            </li>
+        ))}
+    </ul>
+
+         }*/
+
+
+
+
+
+
+
     return (
         <AuthenticatedLayout
             header={
@@ -22,9 +74,9 @@ export default function SuperAdminDashboard() {
                                 Super Admin Dashboard - Manage Sub-Admins and System Settings
                             </h3>
 
-                            {/* Sub-Admin Management Section */}
                             <div className="flex justify-between items-center bg-green-100 p-4 rounded-md">
                                 <div>
+
                                     <h4 className="font-semibold text-green-800">
                                         <FaUserShield className="inline-block mr-2 text-green-600" />
                                         Sub-Admin Management
@@ -37,18 +89,13 @@ export default function SuperAdminDashboard() {
                                     <button className="bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition duration-200">
                                         View Sub-Admins
                                     </button>
-                                    {/* Add Navigation Link to Election Dashboard */}
-                                    <Link
-                                        href={route('subadmin.electiondashboard')} // Ensure this route exists in web.php
-                                        className="bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition duration-200"
-                                    >
+                                    <button className="bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition duration-200">
                                         <FaUserPlus className="inline-block mr-1" />
-                                        Election Dashboard
-                                    </Link>
+                                        Add New Sub-Admin
+                                    </button>
                                 </div>
                             </div>
 
-                            {/* System Activity Overview Section */}
                             <div className="mt-8 bg-green-50 p-6 rounded-lg shadow-md">
                                 <h4 className="font-semibold text-green-700 mb-4">
                                     <FaChartPie className="inline-block mr-2 text-green-600" />
@@ -70,7 +117,6 @@ export default function SuperAdminDashboard() {
                                 </ul>
                             </div>
 
-                            {/* System Configuration and Settings Section */}
                             <div className="mt-8 bg-white p-6 rounded-lg shadow-lg">
                                 <h4 className="font-semibold text-green-700 mb-4">
                                     <FaCog className="inline-block mr-2 text-green-600" />
