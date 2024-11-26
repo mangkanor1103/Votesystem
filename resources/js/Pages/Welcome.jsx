@@ -29,14 +29,18 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                     >
                         <i className="fas fa-check" style={styles.btnIcon}></i> Submit
                     </button>
-                    <button
+
+                    {/* Sub Admin Button - Link to Sub Admin Dashboard */}
+                    <Link
+                        href={route('sub-admin.dashboard')}  // Use route helper for Sub Admin
                         style={isHovered ? { ...styles.btn, ...styles.btnHover } : styles.btn}
                         className="btn-hover"
                         onMouseEnter={() => setIsHovered(true)}
                         onMouseLeave={() => setIsHovered(false)}
                     >
                         <i className="fas fa-user" style={styles.btnIcon}></i> Sub Admin
-                    </button>
+                    </Link>
+
                     <CSSTransition
                         in={true}
                         appear={true}
@@ -143,4 +147,3 @@ const styles = {
         textDecoration: 'underline',
     },
 };
-

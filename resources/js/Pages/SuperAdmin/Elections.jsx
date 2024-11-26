@@ -1,14 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { FaVoteYea } from 'react-icons/fa'; // Use an icon for elections
 import InputError from "@/Components/InputError";
 import PrimaryButton from "@/Components/PrimaryButton";
 import { Head, useForm } from "@inertiajs/react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { useNavigate } from "react-router-dom";  // Import useNavigate from react-router-dom
-import Election from "@/Components/Election";  // Import Election component
 
 export default function Elections({ auth, elections }) {
-    const navigate = useNavigate();  // Hook to navigate to different routes
     const { data, setData, post, processing, reset, errors } = useForm({
         election_name: '',
         election_date: '',
@@ -20,13 +17,6 @@ export default function Elections({ auth, elections }) {
             onSuccess: () => reset(),
         });
     };
-
-    useEffect(() => {
-        // Automatically navigate to the first election's details if there are elections
-        if (elections.length > 0) {
-            navigate(`/election/${elections[0].id}`);
-        }
-    }, [elections, navigate]);  // Trigger when elections data changes
 
     return (
         <AuthenticatedLayout>
@@ -53,20 +43,30 @@ export default function Elections({ auth, elections }) {
                     <InputError message={errors.election_date} className="mt-2 text-red-500" />
 
                     <PrimaryButton className="mt-4 bg-green-600 text-white hover:bg-green-700 transition-all duration-300 ease-in-out transform hover:scale-105 disabled:bg-green-300" disabled={processing}>
-                        {/* Vote Icon with FaVoteYea */}
                         <FaVoteYea className="mr-2 text-xl" /> Create Election
                     </PrimaryButton>
                 </form>
 
-                {/* Election List */}
-                <div className="mt-6 bg-white shadow-md rounded-lg divide-y divide-green-100">
-                    {
-                        elections.map(election =>
-                            <div key={election.id} className="p-4 transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg">
-                                <Election key={election.id} election={election} />
-                            </div>
-                        )
-                    }
+                {/* Election List Table */}
+                <div className="mt-6 bg-white shadow-md rounded-lg overflow-hidden">
+                    <table className="min-w-full divide-y divide-green-200">
+                        <thead className="bg-green-100">
+                            <tr>
+                                <th className="px-6 py-3 text-left text-sm font-medium text-green-900 uppercase tracking-wider">Election Name</th>
+                                <th className="px-6 py-3 text-left text-sm font-medium text-green-900 uppercase tracking-wider">Election Date</th>
+                                <th className="px-6 py-3 text-left text-sm font-medium text-green-900 uppercase tracking-wider">Election Code</th>
+                            </tr>
+                        </thead>
+                        <tbody className="bg-white divide-y divide-green-100">
+                            {elections.map((election) => (
+                                <tr key={election.id} className="hover:bg-green-50">
+                                    <td className="px-6 py-4 text-sm text-green-900">{election.election_name}</td>
+                                    <td className="px-6 py-4 text-sm text-green-900">{election.election_date}</td>
+                                    <td className="px-6 py-4 text-sm text-green-900">{election.election_code}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </AuthenticatedLayout>

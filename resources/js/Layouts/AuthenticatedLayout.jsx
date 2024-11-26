@@ -20,7 +20,7 @@ export default function AuthenticatedLayout({ header, children }) {
                         <div className="flex items-center">
                             <Link href="/" className="flex items-center">
                                 <ApplicationLogo className="h-9 w-auto text-green-50" />
-                                <span className="ml-2 font-semibold text-lg text-green-50">GreenLeaf</span>
+                                <span className="ml-2 font-semibold text-lg text-green-50">RKA Team</span>
                             </Link>
 
                             <div className="hidden space-x-8 sm:flex sm:ml-10">
