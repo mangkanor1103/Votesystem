@@ -5,8 +5,6 @@ import PrimaryButton from "@/Components/PrimaryButton";
 import { Head, useForm } from "@inertiajs/react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import Share from "@/Components/Share";
-import './index.css';
-
 
 
 export default function Index({ auth, shares }) {
