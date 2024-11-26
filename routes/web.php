@@ -88,3 +88,5 @@ Route::resource('/poste', PostController::class)
     ->only(['index', 'store'])
     ->middleware(['auth', 'verified']);
 
+
+
