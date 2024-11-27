@@ -8,11 +8,15 @@ use App\Http\Controllers\ShareController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\SubAdminController;
 use App\Http\Controllers\DashboardController;
 
 Route::get('data', [Profile::class,
     'fetchData'
 ]);
+Route::middleware('auth:sub-admin')->group(function () {
+    Route::get('/sub-admin/dashboard', [SubAdminController::class, 'dashboard'])->name('sub-admin.dashboard');
+});
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
