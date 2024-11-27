@@ -2,6 +2,7 @@ import react from "react";
 import InputError from "@/Components/InputError";
 import PrimaryButton from "@/Components/PrimaryButton";
 import { Head, useForm } from "@inertiajs/react";
+import './index.css';
 
 export default function Index({auth})
 {

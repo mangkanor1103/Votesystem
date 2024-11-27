@@ -22,35 +22,12 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
-// routes/web.php
 
-use App\Http\Controllers\SubAdminLoginController;
-
-Route::post('/api/sub-admin/login', [SubAdminLoginController::class, 'login'])->name('subadmin.login.submit');
-
-// routes/web.php
-use App\Http\Controllers\SubAdminController;
-
-Route::middleware(['auth', 'sub admin'])->group(function () {
-    Route::get('/sub admin/dashboard', [SubAdminController::class, 'index'])->name('sub admin.dashboard');
-});
-
-// routes/web.php
-
-Route::middleware('auth:sub-admin')->group(function () {
-    Route::get('/sub-admin/dashboard', [SubAdminController::class, 'dashboard'])->name('sub-admin.dashboard');
-});
-
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
-Route::middleware(['auth'])->group(function () {
-    Route::get('/elections', [ElectionController::class, 'index'])->name('elections.index');
-    Route::post('/elections', [ElectionController::class, 'store'])->name('elections.store');
-    Route::get('/election/{id}', [ElectionController::class, 'show'])->name('election.show');
-});
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
 
 // Define Share routes
 Route::resource('share', ShareController::class)
@@ -69,6 +46,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Route to view the details of a specific election
     Route::get('/superadmin/elections/{id}', [ElectionController::class, 'show'])->name('superadmin.elections.show');
 });
+
 
 // Profile routes for authenticated users
 Route::middleware('auth')->group(function () {
@@ -109,4 +87,6 @@ Route::get('/header', function(){
 Route::resource('/poste', PostController::class)
     ->only(['index', 'store'])
     ->middleware(['auth', 'verified']);
+
+
 

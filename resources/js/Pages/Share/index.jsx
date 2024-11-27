@@ -6,6 +6,7 @@ import { Head, useForm } from "@inertiajs/react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import Share from "@/Components/Share";
 
+
 export default function Index({ auth, shares }) {
     const { data, setData, post, processing, reset, errors } = useForm({
         message: '',
